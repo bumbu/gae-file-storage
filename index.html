@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Images storage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  </head>
+  <body>
+    <!--
+    <div class="container">
+      <div class="row">
+        <div class="span8 offset2">
+          <form class="form-horizontal" action="{{ upload_url }}" method="post" enctype="multipart/form-data">
+            <fieldset>
+              <legend>Upload form</legend>
+              <div class="control-group">
+                <label class="control-label" for="itemkey">itemkey</label>
+                <div class="controls">
+                  <input type="text" id="itemkey" name="itemkey" placeholder="itemkey">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="author">author</label>
+                <div class="controls">
+                  <input type="text" id="author" name="author" placeholder="bumbu">
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <input type="file" name="file">
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <button type="submit" class="btn">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="container">
+      <div class="row">
+        <div class="span8 offset2">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>User</th>
+                  <th>Uploaded</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for upload in uploads %}
+                <tr>
+                  <td>{{ upload.itemkey }}</td>
+                  <td>{{ upload.author }}</td>
+                  <td>{{ upload.date }}</td>
+                  <td>
+                    <a href="/download/{{ upload.blob }}" class="btn btn-mini btn-info" type="button">View this</a>
+                    <a href="/view/{{ upload.itemkey }}" class="btn btn-mini btn-info" type="button">View item</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endautoescape %}
